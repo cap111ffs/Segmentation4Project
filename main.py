@@ -4,7 +4,7 @@ from pathlib import Path
 import tensorflow as tf
 
 
-input_path = 'Segmentation4Project/input.jpg'
+input_path = 'input.jpg'
 
 colored_mask_array = predictColoredMask(input_path)
 colored_mask = tf.keras.utils.array_to_img(colored_mask_array)
@@ -17,4 +17,4 @@ mask = Image.new("L", colored_mask.size, 128)
 colored_mask.filter(ImageFilter.BoxBlur(20))
 
 segmented_photo = Image.composite(man_photo, colored_mask, mask)
-segmented_photo.save('Segmentation4Project/ouput.jpg')
+segmented_photo.save('ouput.jpg')
